@@ -2,6 +2,7 @@
 
 
 #define SERVER_PORT 60002
+#define IP_SIZE 10
 
 int main(int argc, char* argv[])
 {
@@ -9,10 +10,10 @@ int main(int argc, char* argv[])
    struct sockaddr_in addr;
    int i;
 
-   char inStr[30];
-   char buffer[30];
+   char inStr[CHAR_LIMIT];
+   char buffer[CHAR_LIMIT];
 
-   char SERVER_IP[10];
+   char SERVER_IP[IP_SIZE];
    if(argc < 1)
    {
 	strcpy(SERVER_IP,"10.0.2.15");
@@ -46,8 +47,9 @@ int main(int argc, char* argv[])
 //Get input from user and send to server
   while(1)
   {
-	printf("\nWhat's your message?: ");
-	scanf("%s", inStr);
+	printf("\nMe: ");
+	fgets(inStr, sizeof(inStr), stdin);
+	inStr[strlen(inStr)-1] = 0;
 	strcpy(buffer, inStr);
 	send(mySocket, buffer, strlen(buffer), 0);
 

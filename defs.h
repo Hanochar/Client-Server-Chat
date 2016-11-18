@@ -7,5 +7,7 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 
+#define CHAR_LIMIT 100
+
 int server();
 int client(char*);

@@ -8,7 +8,7 @@ int main()
    struct sockaddr_in myAddr, clientAddr;
    int i, addrSize, bytesRcv;
 
-   char buffer[30];
+   char buffer[CHAR_LIMIT];
 
 //Create a socket
    listenSocket = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP);
@@ -55,7 +55,7 @@ int main()
    {
 	bytesRcv = recv(clientSocket, buffer, sizeof(buffer), 0);
 	buffer[bytesRcv] = 0;
-	printf("\nClient: %s", buffer);
+	printf("Contact: %s\n", buffer);
 	if(strcmp(buffer, "exit") == 0)
 	   break;
    }
