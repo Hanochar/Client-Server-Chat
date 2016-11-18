@@ -2,7 +2,7 @@
 
 #define MY_PORT 60002
 
-int server()
+int main()
 {
    int listenSocket, clientSocket;
    struct sockaddr_in myAddr, clientAddr;
@@ -55,12 +55,9 @@ int server()
    {
 	bytesRcv = recv(clientSocket, buffer, sizeof(buffer), 0);
 	buffer[bytesRcv] = 0;
-	printf("Client: %s\n", buffer);
+	printf("\nClient: %s", buffer);
 	if(strcmp(buffer, "exit") == 0)
-	{
 	   break;
-	}
-
    }
 
 //Close sockets

@@ -3,7 +3,7 @@
 
 #define SERVER_PORT 60002
 
-int client(char* SERVER_IP)
+int main(int argc, char* argv[])
 {
    int mySocket;
    struct sockaddr_in addr;
@@ -12,6 +12,15 @@ int client(char* SERVER_IP)
    char inStr[30];
    char buffer[30];
 
+   char SERVER_IP[10];
+   if(argc < 1)
+   {
+	strcpy(SERVER_IP,"10.0.2.15");
+   }
+   else
+   {
+	strcpy(SERVER_IP, argv[0]);
+   }
 //Create a socket
    mySocket = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP);
    if(mySocket < 0)
@@ -45,9 +54,7 @@ int client(char* SERVER_IP)
 	send(mySocket, buffer, strlen(buffer), 0);
 
 	if(strcmp(inStr, "exit") == 0)
-	{
-		break;
-	}
+	   break;
 
   }
 
