@@ -46,10 +46,8 @@ int main(int argc, char* argv[])
 //Get input from user and send to server
   while(1)
   {
-	printf("What's your message?: ");
+	printf("\nWhat's your message?: ");
 	scanf("%s", inStr);
-	fgets(inStr, sizeof(inStr), stdin);
-	inStr[strlen(inStr)-1] = 0;
 	strcpy(buffer, inStr);
 	send(mySocket, buffer, strlen(buffer), 0);
 
